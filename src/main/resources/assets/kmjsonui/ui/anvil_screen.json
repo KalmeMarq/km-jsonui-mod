@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "namespace": "anvil",
+
+  "title": {
+    "type": "label",
+    "text": "This is anvil"
+  },
+
+  "container_bg": {
+    "type": "image",
+    "texture": "textures/gui/container/villager2.png",
+    "uv": [0, 0],
+    "uv_size": [276, 166]
+  }
+}

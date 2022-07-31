@@ -1,0 +1,275 @@
+{
+  "namespace": "title",
+  "replace": false,
+  "enabled": true,
+
+  "gradient": {
+    "type": "custom",
+    "renderer": "gradient_renderer",
+    "gradient_direction": "horizontal",
+    "color_start": "red",
+    "color_end": "blue"
+  },
+
+  "fill": {
+    "type": "custom",
+    "renderer": "fill_renderer",
+    "color": "red"
+  },
+
+  "nametag": {
+    "type": "custom",
+    "renderer": "nametag_renderer",
+    "text_color": "gray",
+    "background_color": [0.5, 0.5, 0.5, 0.5]
+  },
+
+  "entity": {
+    "type": "custom",
+    "renderer": "entity_renderer",
+    "property_bag": {
+      "entity_uuid": "1b1bf25b-879d-46c6-b300-a0fb23f0b64a",
+      "#look_at_cursor": true,
+      "shadows": false
+    }
+  },
+
+  "tooltip": {
+    "type": "custom",
+    "renderer": "hover_text_renderer",
+    "property_bag": {
+      "#hover_text": "tooltip"
+    }
+  },
+
+  "panorama": {
+    "type": "custom",
+    "renderer": "panorama_renderer",
+    "texture": "textures/gui/title/background/panorama",
+    "speed": 20
+  },
+
+  "cursor": {
+    "type": "custom",
+    "renderer": "cursor_renderer",
+    "offset": ["50% - 50%x", "50% - 50%y"]
+  },
+
+  "attack_cooldown": {
+    "type": "custom",
+    "renderer": "attack_cooldown_renderer",
+    "property_bag": {
+      "#cooldown_progress": 0.5
+    }
+  },
+
+  "vignette": {
+    "type": "custom",
+    "renderer": "vignette_renderer"
+  },
+
+  "status_effect": {
+    "type": "custom",
+    "renderer": "status_effect_renderer",
+    "property_bag": {
+      "#compact": false
+    }
+  },
+
+  "item_renderer": {
+    "type": "custom",
+    "renderer": "item_renderer",
+    "property_bag": {
+      "#item_id": "minecraft:stick"
+    }
+  }
+
+  "splash_text": {
+    "type": "custom",
+    "renderer": "splash_text_renderer",
+    "rotation": 20,
+    "color": "yellow",
+    "property_bag": {
+      "#content_file": "minecraft:texts/splashes.txt"
+    }
+  },
+
+  "carousel_label": {
+    "type": "carousel_label",
+    "text": "This is a carousel label. How are you doing today.",
+    "color": "red",
+    "alpha": 1,
+    "hover_color: "blue",
+    "hover_alpha": 0.5,
+    "pressed_color: "green",
+    "pressed_alpha": 0.25
+  },
+
+  "panel": {
+    "type": "panel",
+    "size": ["100% + 20px + 40%y", "100%c"],
+    "max_size": [20, 20],
+    "min_size": [20, 20],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": ["-50%x", 0],
+    "layer": 1
+  },
+
+  "label": {
+    "type": "label",
+    "size": ["default", 10],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "text": "#version",
+    "text": {
+      "translate": "chat.type.text",
+      "with": ["Steve", "hi"]
+    },
+    "color": [1, 0, 1],
+    "shadow": true,
+    "shadow": {
+      "offset": [1, 1],
+      "multiplier": 0.25,
+      "color": [1, 1, 1]
+    },
+    "font_type": "minecraft:default",
+    "backup_font_type": "minecraft:default",
+    "localize": true,
+    "hide_hyphen": false,
+    "text_alignment": "center",
+    "font_size": "normal",
+    "font_scale_factor": 1,
+    "line_padding": 2,
+    "alpha": 0.5,
+    "bindings": [
+      {
+        "binding_name": "#version"
+      }
+    ]
+  },
+
+  "image": {
+    "type": "image",
+    "texture": "textures/gui/widgets.png",
+    "uv": [1, 1],
+    "uv_size": [1, 1],
+    "base_size": [1, 1],
+    "nineslice_size": [1, 1, 1, 1],
+    "color": [0.5, 1, 1],
+    "clip_direction": "left",
+    "clip_ratio": 0.0,
+    "keep_ratio": true,
+    "fill": true,
+    "grayscale": true,
+    "tiled": true,
+    "tiled_scale": [0.0, 0.0],
+    "allow_debug_missing_texture": false,
+    "clip_pixelperfect": true
+  },
+
+  "trial": {
+    "type": "label",
+    "text": "#trial_time_text",
+    "bindings": [
+      {
+        "binding_name": "#trial_time_text"
+      },
+      {
+        "binding_name": "#trial_time_visible",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "game_version": {
+    "type": "label",
+    "text": "#game_version",
+    "bindings": [
+      {
+        "binding_name": "#game_version"
+      }
+    }
+  },
+
+  "death_title": {
+    "type": "label",
+    "text": "$title_text",
+    "$title_text": "deathScreen.title",
+    "variables": {
+      "require": "$is_hardcore",
+      "$title_text": "deathScreen.title.hardcore"
+    }
+  },
+
+  "level_loading_progress": {
+    "text": "#loading_progress",
+    "bindings": [
+      {
+        "binding_name": "#loading_progress"
+      }
+    }
+  },
+
+  "enchanting_book": {
+    "type": "custom",
+    "renderer": "enchanting_book_renderer",
+    "property_bag": {
+      "#open": true
+    }
+  },
+
+  "banner": {
+    "type": "custom",
+    "renderer": "banner_renderer"
+  },
+
+  "loading_chunk_map": {
+    "type": "custom",
+    "renderer": "loading_chunk_map_renderer",
+    "property_bag": {
+      "pixel_size": 2,
+      "pixel_margin": 0
+    }
+  },
+
+  "subtitles": {
+    "type": "custom",
+    "renderer": "subtitles_renderer"
+  },
+
+  "debug_overlay": {
+    "type": "custom",
+    "renderer": "debug_overlay_renderer"
+  },
+
+  "player_list": {
+    "type": "custom",
+    "renderer": "player_list_renderer"
+  },
+
+  "autosave_indicator": {
+    "text": "menu.savingLevel",
+    "bindings": [
+      {
+        "binding_name": "#autosave_indicator_visible",
+        "binding_name_override": "#visible"
+      }
+    ]
+  }
+}
+
+"$is_demo"
+"$is_modded"
+"$is_release"
+"$is_snapshot"
+"$is_release_candidate"
+"$is_prerelease"
+"$in_game"
+#debug_overlay_visible
+#player_list_visible
+#underwater_visible
+#pumpkin_blur_visible
+#powder_snow_outline_visible
+#spyglass_scope_visible
+#portal_visible

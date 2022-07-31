@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "kmjsonui",
+  "version": "${version}",
+  "name": "KM Json UI Mod",
+  "description": "Customize the menus with json.",
+  "authors": [
+    "KalmeMarq"
+  ],
+  "contact": {
+    "sources": "https://github.com/KalmeMarq/km-jsonui-mod"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/kmjsonui/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.kalmemarq.jsonui.JsonUIMod"
+    ],
+    "client": [
+      "me.kalmemarq.jsonui.JsonUIClientMod"
+    ]
+  },
+  "mixins": [
+    "kmjsonui.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "fabric": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+  }
+}

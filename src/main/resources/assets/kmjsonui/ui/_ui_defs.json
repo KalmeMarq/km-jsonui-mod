@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "ui_defs": [
+    "kmjsonui:ui/anvil_screen.json",
+    "kmjsonui:ui/game_menu_screen.json",
+    "kmjsonui:ui/options_screen.json",
+    "kmjsonui:ui/title_screen.json",
+    "kmjsonui:ui/world_create_screen.json"
+  ]
+}

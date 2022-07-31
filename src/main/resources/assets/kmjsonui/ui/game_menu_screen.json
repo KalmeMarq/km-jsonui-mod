@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "namespace": "game_menu",
+
+  "title": {
+    "type": "label",
+    "text": "This is game_menu"
+  }
+}

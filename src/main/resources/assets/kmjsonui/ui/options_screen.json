@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "namespace": "options",
+
+  "title": {
+    "type": "label",
+    "text": "This is options"
+  }
+}

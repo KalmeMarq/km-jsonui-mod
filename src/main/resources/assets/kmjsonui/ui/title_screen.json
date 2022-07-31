@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "namespace": "title",
+
+  "custom_label": {
+    "type": "label",
+    "text": "menu.singleplayer",
+    "color": "#00FFFF",
+    "localize": false,
+    "font_type": "minecraft:default",
+    "shadow": true
+  }/* ,
+
+  "custom_image": {
+    "type": "image",
+    "texture": "minecraft:textures/gui/widgets.png",
+    "color": "rgb(255,0,0)"
+  } */
+}

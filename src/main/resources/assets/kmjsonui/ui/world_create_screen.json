@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "namespace": "world_create",
+
+  "title": {
+    "type": "label",
+    "text": "This is create world"
+  }
+}
