@@ -1,0 +1,7 @@
+{
+  "title": true,
+  "options": true,
+  "game_menu": true,
+  "anvil": true,
+  "world_create": true
+}

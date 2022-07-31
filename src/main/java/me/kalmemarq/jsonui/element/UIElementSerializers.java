@@ -12,6 +12,7 @@ public class UIElementSerializers {
     static {
         register("label", new UILabelElement.Serializer());
         register("image", new UISpriteElement.Serializer());
+        register("custom", new UICustomElement.Serializer());
     }
 
     public static void register(String name, IUIElementSerializer serializer) {

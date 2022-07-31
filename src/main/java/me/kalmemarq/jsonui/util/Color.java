@@ -78,6 +78,10 @@ public class Color {
         return (int)(this.r * 255) << 16 | (int)(this.g * 255) << 8 | (int)(this.b * 255);
     }
 
+    public int toColorWithAlpha() {
+        return (int)(this.a * 255) << 24 | (int)(this.r * 255) << 16 | (int)(this.g * 255) << 8 | (int)(this.b * 255);
+    }
+
     public static Color fromRGB(float red, float green, float blue) {
         return new Color(red, green, blue, 1.0f);
     }

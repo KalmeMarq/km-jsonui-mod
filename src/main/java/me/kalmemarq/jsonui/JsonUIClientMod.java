@@ -48,6 +48,8 @@ import net.minecraft.client.gui.screen.world.SelectWorldScreen;
 import net.minecraft.client.realms.gui.screen.RealmsMainScreen;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
 import java.io.InputStream;
 import java.util.List;
@@ -74,6 +76,8 @@ public class JsonUIClientMod implements ClientModInitializer {
                             for (UIElement el : els) {
                                 el.render(client, matrices, screen.width, screen.height, mouseX, mouseY, tickDelta);
                             }
+
+                            client.getItemRenderer().renderInGui(new ItemStack(Items.ACACIA_BOAT), 100, 0);
                         });
                     }
                 }

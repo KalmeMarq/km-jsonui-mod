@@ -27,6 +27,7 @@
   "entity": {
     "type": "custom",
     "renderer": "entity_renderer",
+    "use_player": true,
     "property_bag": {
       "entity_uuid": "1b1bf25b-879d-46c6-b300-a0fb23f0b64a",
       "#look_at_cursor": true,
@@ -88,10 +89,7 @@
     "type": "custom",
     "renderer": "splash_text_renderer",
     "rotation": 20,
-    "color": "yellow",
-    "property_bag": {
-      "#content_file": "minecraft:texts/splashes.txt"
-    }
+    "color": "yellow"
   },
 
   "carousel_label": {
@@ -240,7 +238,9 @@
 
   "debug_overlay": {
     "type": "custom",
-    "renderer": "debug_overlay_renderer"
+    "renderer": "debug_overlay_renderer",
+    "text_color": "white",
+    "background_color": [0.5, 0.5, 0.5, 0.5]
   },
 
   "player_list": {

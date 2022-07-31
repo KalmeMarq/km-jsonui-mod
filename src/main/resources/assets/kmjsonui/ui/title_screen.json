@@ -2,18 +2,55 @@
   "enabled": true,
   "namespace": "title",
 
-  "custom_label": {
-    "type": "label",
-    "text": "menu.singleplayer",
-    "color": "#00FFFF",
-    "localize": false,
-    "font_type": "minecraft:default",
-    "shadow": true
-  }/* ,
+  "splash": {
+    "type": "custom",
+    "renderer": "splash_text_renderer",
+    "rotation": 20.0,
+    "color": "red",
+    "speed": 7
+  },
 
-  "custom_image": {
-    "type": "image",
-    "texture": "minecraft:textures/gui/widgets.png",
-    "color": "rgb(255,0,0)"
-  } */
+  "nametag": {
+    "type": "custom",
+    "renderer": "name_tag_renderer",
+    "property_bag": {
+      "#playername": "NotchMyMan"
+    }
+  }
+
+  // "filler": {
+  //   "type": "custom",
+  //   "renderer": "fill_renderer",
+  //   "color": [1, 0, 0]
+  // },
+
+  // "grad": {
+  //   "type": "custom",
+  //   "renderer": "gradient_renderer",
+  //   "gradient_direction": "horizontal",
+  //   "color_start": [0, 0, 1],
+  //   "color_end": [1, 0, 1]
+  // },
+
+  // "item": {
+  //   "type": "custom",
+  //   "renderer": "inventory_item_renderer",
+  //   "property_bag": {
+  //     "#item_id": "minecraft:diamond_sword"
+  //   }
+  // }
+  // "custom_label": {
+  //   "type": "label",
+  //   "text": "menu.singleplayer",
+  //   "color": "#00FFFF",
+  //   "localize": false,
+  //   "font_type": "minecraft:default",
+  //   "shadow": true
+  // },
+
+  // "custom_image": {
+  //   "type": "image",
+  //   "texture": "minecraft:textures/gui/widgets.png",
+  //   "color": "rgb(255,0,0)"
+  // }
 }
