@@ -3,6 +3,7 @@ package me.kalmemarq.jsonui;
 import com.google.common.collect.Maps;
 import com.google.gson.*;
 import me.kalmemarq.jsonui.element.IUIElementSerializer;
+import me.kalmemarq.jsonui.element.PropertyBag;
 import me.kalmemarq.jsonui.element.UIElement;
 import me.kalmemarq.jsonui.element.UIElementSerializers;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
@@ -115,7 +116,7 @@ public class JsonUIManager implements SimpleSynchronousResourceReloadListener {
         return namespaceDefEnabled.getOrDefault(namespace, false);
     }
 
-    public static List<UIElement> getUIElements(String namespace) {
+    public static List<UIElement> getUIElements(String namespace, Map<String, PropertyBag.Property> storage) {
         List<UIElement> els = new ArrayList<>();
 
         JsonObject obj = namespaceDef.get(namespace);
@@ -126,7 +127,7 @@ public class JsonUIManager implements SimpleSynchronousResourceReloadListener {
                 String type = JsonHelper.getString(eObj, "type");
 
                 IUIElementSerializer serializer = UIElementSerializers.get(type);
-                els.add(serializer.fromJson(eObj));
+                els.add(serializer.fromJson(eObj, storage));
             }
         }
 

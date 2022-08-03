@@ -1,8 +1,10 @@
 package me.kalmemarq.jsonui;
 
+import me.kalmemarq.jsonui.element.PropertyBag;
 import me.kalmemarq.jsonui.element.UIElement;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
+import net.minecraft.SharedConstants;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.AddServerScreen;
 import net.minecraft.client.gui.screen.ChatScreen;
@@ -66,9 +68,14 @@ public class JsonUIClientMod implements ClientModInitializer {
     public void onInitializeClient() {
         ScreenEvents.BEFORE_INIT.register((MinecraftClient client, Screen s, int w, int h) -> {
             String name = TempScreens.getName(s);
+            Map<String, PropertyBag.Property> storage = Maps.newHashMap();
+            storage.put("#game_version", new PropertyBag.Property("#game_version"));
+            storage.put("#version_visible", new PropertyBag.Property("#version_visible"));
 
             if (name != null) {
-                List<UIElement> els = JsonUIManager.getUIElements(name);
+                List<UIElement> els = JsonUIManager.getUIElements(name, storage);
+                storage.get("#game_version").setValue(SharedConstants.getGameVersion().getName());
+                storage.get("#version_visible").setValue(true);
 
                 if (els.size() > 0) {
                     if (TempScreens.isValid(s) && JsonUIManager.isEnabled(name)) {
@@ -77,7 +84,11 @@ public class JsonUIClientMod implements ClientModInitializer {
                                 el.render(client, matrices, screen.width, screen.height, mouseX, mouseY, tickDelta);
                             }
 
-                            client.getItemRenderer().renderInGui(new ItemStack(Items.ACACIA_BOAT), 100, 0);
+                            if (mouseX > screen.width / 2) {
+                                storage.get("#version_visible").setValue(false);
+                            } else {
+                                storage.get("#version_visible").setValue(true);
+                            }
                         });
                     }
                 }

@@ -2,6 +2,13 @@
   "enabled": true,
   "namespace": "options",
 
+  "pano": {
+    "type": "custom",
+    "renderer": "panorama_renderer",
+    "texture": "textures/gui/title/background/panorama",
+    "speed": 1
+  },
+
   "title": {
     "type": "label",
     "text": "This is options"

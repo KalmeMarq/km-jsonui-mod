@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mojang.blaze3d.systems.RenderSystem;
 
+import me.kalmemarq.jsonui.element.UICustomElement;
 import me.kalmemarq.jsonui.util.Color;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.BufferBuilder;
@@ -22,7 +23,7 @@ public class FillRenderer implements ICustomRenderer {
     public FillRenderer() {
     }
 
-    public void init(JsonObject obj) {
+    public void init(JsonObject obj, UICustomElement element) {
         if (JsonHelper.hasString(obj, "color")) {
             String c = JsonHelper.getString(obj, "color");
             if (Color.hasName(c)) {

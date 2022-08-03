@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Color {
-    private static Map<String, Color> COLOR_NAMES = Maps.newHashMap();
+    private static final Map<String, Color> COLOR_NAMES = Maps.newHashMap();
 
     public static Color BLACK = new Color("black", 0x000000);
     public static Color WHITE = new Color("white", 0xFFFFFF);
@@ -66,8 +66,7 @@ public class Color {
 
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o instanceof Color) {
-            Color m = (Color)o;
+        if (o instanceof Color m) {
             return m.r == this.r && m.g == this.g && m.b == this.b && m.a == this.a;
         }
 

@@ -12,6 +12,8 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.JsonHelper;
 
+import java.util.Map;
+
 public class UICustomElement extends UIElement {
     public JsonObject obj;
     @Nullable 
@@ -27,7 +29,7 @@ public class UICustomElement extends UIElement {
         this.renderer = renderer;
 
         if (this.renderer != null) {
-            this.renderer.init(obj);
+            this.renderer.init(obj, this);
         }
     }
 
@@ -40,7 +42,7 @@ public class UICustomElement extends UIElement {
 
     protected static final class Serializer implements IUIElementSerializer {
         @Override
-        public UIElement fromJson(JsonObject obj) {
+        public UIElement fromJson(JsonObject obj, Map<String, PropertyBag.Property> storage) {
             UICustomElement el = new UICustomElement();
 
             // bruh
@@ -52,6 +54,10 @@ public class UICustomElement extends UIElement {
                 if (c != null) {
                     el.setRenderer(c.create());
                 }
+            }
+
+            if (JsonHelper.hasJsonObject(obj, "property_bag")) {
+                el.setPropertyBag(PropertyBag.Serializer.fromJson(JsonHelper.getObject(obj, "property_bag")));
             }
 
             return el;

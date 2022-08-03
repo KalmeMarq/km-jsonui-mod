@@ -4,6 +4,8 @@ import javax.annotation.Nullable;
 
 import com.google.gson.JsonObject;
 
+import me.kalmemarq.jsonui.element.PropertyBag;
+import me.kalmemarq.jsonui.element.UICustomElement;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.Item;
@@ -19,20 +21,18 @@ public class InventoryItemRenderer implements ICustomRenderer {
     
     public InventoryItemRenderer() {}
 
-    public void init(JsonObject obj) {
-        if (JsonHelper.hasJsonObject(obj, "property_bag")) {
-            JsonObject bag = JsonHelper.getObject(obj, "property_bag");
+    public void init(JsonObject obj, UICustomElement element) {
+        PropertyBag propertyBag = element.getPropertyBag();
 
-            if (JsonHelper.hasString(bag, "#item_id")) {
-                Identifier id = Identifier.tryParse(JsonHelper.getString(bag, "#item_id"));
+        propertyBag.subscribe("#item_id", ((newValue, property) -> {
+            Identifier id = Identifier.tryParse(property.getAsString());
 
-                if (id != null) {
-                    if (Registry.ITEM.containsId(id)) {
-                        this.item = Registry.ITEM.get(id);
-                    }
+            if (id != null) {
+                if (Registry.ITEM.containsId(id)) {
+                    this.item = Registry.ITEM.get(id);
                 }
             }
-        }
+        }));
     }
 
     public void render(MinecraftClient client, MatrixStack matrices, int mouseX, int mouseY, float tickDelta) {

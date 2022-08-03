@@ -14,9 +14,11 @@
     "type": "custom",
     "renderer": "name_tag_renderer",
     "property_bag": {
-      "#playername": "NotchMyMan"
+      "#playername": "Notch My Man",
+      "#x_padding": 20,
+      "#y_padding": 2
     }
-  }
+  },
 
   // "filler": {
   //   "type": "custom",
@@ -39,14 +41,24 @@
   //     "#item_id": "minecraft:diamond_sword"
   //   }
   // }
-  // "custom_label": {
-  //   "type": "label",
-  //   "text": "menu.singleplayer",
-  //   "color": "#00FFFF",
-  //   "localize": false,
-  //   "font_type": "minecraft:default",
-  //   "shadow": true
-  // },
+
+   "custom_label": {
+     "type": "label",
+     "text": "#text",
+     "color": "#00FFFF",
+     "font_type": "minecraft:default",
+     "shadow": true,
+     "bindings": [
+       {
+         "binding_name": "#game_version",
+         "binding_name_override": "#text"
+       },
+       {
+         "binding_name": "#version_visible",
+         "binding_name_override": "#visible"
+       }
+     ]
+   }
 
   // "custom_image": {
   //   "type": "image",

@@ -1,0 +1,11 @@
+{
+  "text.autoconfig.kmjsonui.title": "Json UI Configuration",
+  "text.autoconfig.kmjsonui.option.screenAnimations": "Screen Animations",
+  "text.autoconfig.kmjsonui.option.safeArea": "Safe Zone Area",
+  "text.autoconfig.kmjsonui.option.hidePaperdoll": "Hide Paper Doll",
+  "text.autoconfig.kmjsonui.option.copyCoordinateUI": "Copy Coordinate UI",
+  "text.autoconfig.kmjsonui.option.hudOpacity": "HUD Opacity",
+  "text.autoconfig.kmjsonui.option.uiProfile": "UI Profile",
+  "kmjsonui.uiProfile.classic": "Classic",
+  "kmjsonui.uiProfile.pocket": "Pocket"
+}

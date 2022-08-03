@@ -19,6 +19,9 @@
     ],
     "client": [
       "me.kalmemarq.jsonui.JsonUIClientMod"
+    ],
+    "modmenu": [
+      "me.kalmemarq.jsonui.JsonUIModMenu"
     ]
   },
   "mixins": [

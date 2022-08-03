@@ -3,6 +3,8 @@ package me.kalmemarq.jsonui.element.renderer;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import me.kalmemarq.jsonui.element.PropertyBag;
+import me.kalmemarq.jsonui.element.UICustomElement;
 import me.kalmemarq.jsonui.util.Color;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -10,13 +12,25 @@ import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.JsonHelper;
 
+import java.awt.desktop.SystemEventListener;
+import java.util.Random;
+
 public class NameTagRenderer extends DrawableHelper implements ICustomRenderer {
+    Random RANDOM = new Random();
+
     public Color textColor = Color.fromRGBA(1.0f, 1.0f, 1.0f, 1.0f);
-    public Color bgColor = Color.fromRGBA(0.5f, 0.5f, 0.5f, 0.25f);
+    public Color bgColor = Color.fromRGBA(0.5f, 0.5f, 0.5f, 0.5f);
     public String playerName = "";
+    public int xPadding = 0;
+    public int yPadding = 0;
+
+    PropertyBag bag;
+
+    int x = 10;
+    int y = 10;
 
     @Override
-    public void init(JsonObject obj) {
+    public void init(JsonObject obj, UICustomElement element) {
         if (JsonHelper.hasString(obj, "text_color")) {
             String c = JsonHelper.getString(obj, "text_color");
             if (Color.hasName(c)) {
@@ -49,21 +63,41 @@ public class NameTagRenderer extends DrawableHelper implements ICustomRenderer {
             }
         }
 
-        if (JsonHelper.hasJsonObject(obj, "property_bag")) {
-            JsonObject bag = JsonHelper.getObject(obj, "property_bag");
+        PropertyBag propertyBag = element.getPropertyBag();
+        bag = propertyBag;
 
-            if (JsonHelper.hasString(bag, "#playername")) {
-                playerName = JsonHelper.getString(bag, "#playername");
-            }
-        }
+        propertyBag.subscribe("#playername", (newValue, property) -> {
+            playerName = property.getAsString();
+        });
+
+        propertyBag.subscribe("#x_padding", ((newValue, property) -> {
+            xPadding = property.getAsInt();
+        }));
+
+        propertyBag.subscribe("#y_padding", ((newValue, property) -> {
+            yPadding = property.getAsInt();
+        }));
     }
 
     @Override
     public void render(MinecraftClient client, MatrixStack matrices, int mouseX, int mouseY, float tickDelta) {
         int w = client.textRenderer.getWidth(this.playerName);
-        
-        fill(matrices, 1, 1, 1 + w + 2, 1 + client.textRenderer.fontHeight + 1, this.bgColor.toColorWithAlpha());
 
-        client.textRenderer.draw(matrices, this.playerName, 2, 2, this.textColor.toColorWithAlpha());
+        int x1 = x - xPadding - 1;
+        int y1 = y - yPadding - 1;
+        int x2 = x + w + xPadding;
+        int y2 = y + client.textRenderer.fontHeight + yPadding;
+
+        fill(matrices, x1 - 1, y1 - 1, x2 + 1, y2 + 1, this.bgColor.toColorWithAlpha());
+
+        client.textRenderer.draw(matrices, this.playerName, x, y, this.textColor.toColorWithAlpha());
+
+        if (bag != null) {
+            if (RANDOM.nextInt(10) == 1) {
+                bag.setValue("#x_padding", RANDOM.nextInt(0, 20));
+            } else if (RANDOM.nextInt(10) == 2) {
+                bag.setValue("#y_padding", RANDOM.nextInt(0, 20));
+            }
+        }
     }
 }

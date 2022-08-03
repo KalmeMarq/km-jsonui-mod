@@ -23,6 +23,8 @@ import net.minecraft.util.JsonHelper;
 import net.minecraft.util.math.Matrix4f;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
+
 public class UISpriteElement extends UIElement {
     public Identifier texture = TextureManager.MISSING_IDENTIFIER;
     public Color color = Color.WHITE;
@@ -110,7 +112,7 @@ public class UISpriteElement extends UIElement {
 
     protected static final class Serializer implements IUIElementSerializer {
         @Override
-        public UIElement fromJson(JsonObject obj) {
+        public UIElement fromJson(JsonObject obj, Map<String, PropertyBag.Property> storage) {
             UISpriteElement el = new UISpriteElement();
 
             if (JsonHelper.hasString(obj, "texture")) {
@@ -147,6 +149,10 @@ public class UISpriteElement extends UIElement {
 
             if (JsonHelper.hasNumber(obj, "alpha")) {
                 el.setAlpha(JsonHelper.getFloat(obj, "alpha"));
+            }
+
+            if (JsonHelper.hasJsonObject(obj, "property_bag")) {
+                el.setPropertyBag(PropertyBag.Serializer.fromJson(JsonHelper.getObject(obj, "property_bag")));
             }
 
             return el;
